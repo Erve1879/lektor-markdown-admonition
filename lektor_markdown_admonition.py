@@ -6,10 +6,10 @@ from lektor.pluginsystem import Plugin
 _prefix_re = re.compile(r'^\s*(!{1,4})\s+')
 
 CLASSES = {
-    1: 'note',
-    2: 'info',
-    3: 'tip',
-    4: 'warning',
+    1: 'success',
+    2: 'notice',
+    3: 'warning',
+    4: 'danger',
 }
 
 
@@ -20,7 +20,7 @@ class AdmonitionMixin(object):
         if match is None:
             return super(AdmonitionMixin, self).paragraph(text)
         level = len(match.group(1))
-        return '<div class="admonition admonition-%s"><p>%s</p></div>' % (
+        return '<aside class="%s"><p>%s</p></div>' % (
             CLASSES[level],
             text[match.end():]
         )
