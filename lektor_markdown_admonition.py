@@ -20,7 +20,7 @@ class AdmonitionMixin(object):
         if match is None:
             return super(AdmonitionMixin, self).paragraph(text)
         level = len(match.group(1))
-        return '<aside class="%s"><p>%s</p></div>' % (
+        return '<aside class="%s">%s</div>' % (
             CLASSES[level],
             text[match.end():]
         )
